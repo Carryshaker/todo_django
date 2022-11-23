@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="todolist.css">
+</head>
+<body>
+    <h1>Список задач</h1>
+    <form action="/addTodoItem/" method = "post">{% csrf_token %}
+    <input type="text" name="content">
+    <input type="submit" value="Добавить задачу">
+    </form>
+    <ul>
+        {% for i in all_items %}
+        <li>
+            {{i.content}}
+            <form action="/deleteTodoItem/{{i.id}}/" method = "post">{% csrf_token %}
+            <input type="submit" value="Удалить">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
