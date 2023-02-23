@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
+<link rel="stylesheet" href="{ % static 'css/todolist.css' %}"/>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="todolist.css">
+    <title>TODO</title>
 </head>
 <body>
+    <style>
+        .btn {
+         display: inline-block; /* Строчно-блочный элемент */
+         background: #8C959D; /* Серый цвет фона */
+         color: #fff; /* Белый цвет текста */
+         text-decoration: none; /* Убираем подчёркивание */
+         border-radius: 3px; /* Скругляем уголки */
+        }
+    </style>
     <h1>Список задач</h1>
     <form action="/addTodoItem/" method = "post">{% csrf_token %}
     <input type="text" name="content">
-    <input type="submit" value="Добавить задачу">
+    <input type="submit" value="Добавить задачу" class="btn">
     </form>
     <ul>
         {% for i in all_items %}
         <li>
             {{i.content}}
             <form action="/deleteTodoItem/{{i.id}}/" method = "post">{% csrf_token %}
-            <input type="submit" value="Удалить">
+            <input type="submit" value="Удалить" class="btn">
             </form>
         </li>
         {% endfor %}

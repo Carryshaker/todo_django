@@ -120,7 +120,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    'todo/static',
+    'todoapp/static',
 ]
 
 STATIC_ROOT = BASE_DIR.joinpath("static")

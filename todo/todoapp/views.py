@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 from django.shortcuts import render
 from .models import TodoListItem
 from django.http import HttpResponseRedirect
+
+def home(request):
+    return render(request, 'home.html')
 
 def todoappView(request):
     return render(request, 'todolist.html')
